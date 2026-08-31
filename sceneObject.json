@@ -119,22 +119,13 @@
             "scriptName": "PlayerController"
         },
         {
-            "collider": {
-                "isTrigger": false,
-                "size": [
-                    2.0,
-                    2.0,
-                    2.0
-                ],
-                "type": "Box"
-            },
-            "displayName": "player",
-            "modelPath": "resources/asset\\cube/cube.obj",
+            "displayName": "resources//Head.obj",
+            "modelPath": "resources//Head.obj",
             "obb": {
                 "center": [
-                    1.171135663986206,
-                    11.659117698669434,
-                    -55.67444610595703
+                    0.0,
+                    0.5708030462265015,
+                    0.0
                 ],
                 "orientationX": [
                     1.0,
@@ -152,34 +143,26 @@
                     1.0
                 ],
                 "size": [
-                    1.0,
-                    1.0,
-                    1.0
+                    0.40817201137542725,
+                    0.4872930347919464,
+                    0.40817201137542725
                 ]
             },
             "position": [
-                1.171135663986206,
-                11.659117698669434,
-                -55.67444610595703
+                0.0,
+                0.0,
+                0.0
             ],
-            "rigidbody": {
-                "angularDrag": 0.0,
-                "isKinematic": false,
-                "linearDrag": 0.0,
-                "mass": 1.0,
-                "useGravity": true
-            },
             "rotation": [
                 0.0,
-                -0.0,
+                0.0,
                 0.0
             ],
             "scale": [
                 1.0,
                 1.0,
                 1.0
-            ],
-            "scriptName": "player"
+            ]
         }
     ]
 }
