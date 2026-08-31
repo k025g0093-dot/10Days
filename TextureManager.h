@@ -43,7 +43,7 @@ public:
     }
 
     static const int MAX_TEXTURES = 256;
-    static const int IMGUI_RESERVED = 1;
+    static const int IMGUI_RESERVED = 8;
     int m_textureCount = 0;
 
     TextureManager() = default;
