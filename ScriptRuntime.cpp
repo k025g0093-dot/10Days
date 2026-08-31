@@ -187,6 +187,7 @@ void ScriptRuntime::Shutdown() {
 	KillProcess();
 	m_instances.clear();
 	m_destroyPending.clear();
+	m_physicsEvents.clear();
 }
 
 // ───────── 再ビルド ─────────
@@ -274,7 +275,14 @@ void ScriptRuntime::Tick(float dt) {
 		PutStr(m_send, event.otherEntityName);
 	}
 
-	PutI32(m_send, 0);                       // eventCount ← 枠のみ
+	if (!m_physicsEvents.empty()) {
+		char eb[128];
+		sprintf_s(eb, "[SR] Send physicsEvents=%d", (int)m_physicsEvents.size());
+		SR_LOG(eb);
+	}
+
+	// 送ったら必ず捨てる。残すと毎フレーム同じ接触が C# に届き続ける
+	m_physicsEvents.clear();
 
 	// spawn 済みフラグを落とす（次フレームから tick 対象）
 	for (int id : spawns) m_instances[id].spawnPending = false;
@@ -350,9 +358,20 @@ void ScriptRuntime::Tick(float dt) {
 			jolt->SetLinearVelocity(e->m_bodyIdRaw, velocity);
 
 			break;
-		case 2:  // AddImpulse
+		case 2: { // Jump : Y だけ上書きする。XZ は Jolt / mode1 の結果をそのまま残す
+			if (e->m_bodyIdRaw == UINT32_MAX) break;
 
+			Vector3 jumpVelocity = velocity;
+			jumpVelocity.y = y;
+
+			jolt->WakeBody(e->m_bodyIdRaw);
+			jolt->SetLinearVelocity(e->m_bodyIdRaw, jumpVelocity);
+
+			char jb[160];
+			sprintf_s(jb, "[SR] Jump: id=%d vy=%.2f", id, y);
+			SR_LOG(jb);
 			break;
+		}
 
 		case 3: // scale
 

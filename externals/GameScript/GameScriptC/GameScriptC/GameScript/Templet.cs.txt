@@ -66,6 +66,24 @@ public class #SCRIPTNAME# : Templet
     //           z += (gp.LeftThumbY / 32768f) * speed * dt;
     //   }
 
+    // ==============================================
+    // 接触イベント（必要なものだけ override してください）
+    // ==============================================
+    //   other.EntityName … ぶつかった相手の表示名
+    //   other.EntityId   … ぶつかった相手のBodyID
+    //   Jump(速度Y)      … 上方向に飛ばす（Joltの速度Yを上書きする）
+    //
+    // public override void OnCollisionEnter(CollisionInfo other)
+    // {
+    //     Console.WriteLine($"ぶつかった: {other.EntityName}");
+    //     Jump(20.0f);
+    // }
+    //
+    // public override void OnTriggerEnter(CollisionInfo other)
+    // {
+    //     Console.WriteLine($"トリガーに入った: {other.EntityName}");
+    // }
+
     public override void GetMoveVelocity(ref float vx, ref float vz, float dt)
 {
     const float speed = 15.0f;

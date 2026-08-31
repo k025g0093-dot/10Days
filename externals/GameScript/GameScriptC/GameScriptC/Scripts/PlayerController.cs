@@ -23,14 +23,11 @@ public class PlayerController : Templet
     public override void Update()
     {
         // --- キーボード: 押しっぱなし判定の例(W/A/S/Dで移動したい時など) ---
-        if (IsKeyDown(ConsoleKey.W))
-            Console.WriteLine("W is held");
-        if (IsKeyDown(ConsoleKey.A))
-            Console.WriteLine("A is held");
-        if (IsKeyDown(ConsoleKey.S))
-            Console.WriteLine("S is held");
-        if (IsKeyDown(ConsoleKey.D))
-            Console.WriteLine("D is held");
+        // ※ 毎フレーム出力されて接触ログが埋もれるので、確認中はコメントアウトしている
+        // if (IsKeyDown(ConsoleKey.W)) Console.WriteLine("W is held");
+        // if (IsKeyDown(ConsoleKey.A)) Console.WriteLine("A is held");
+        // if (IsKeyDown(ConsoleKey.S)) Console.WriteLine("S is held");
+        // if (IsKeyDown(ConsoleKey.D)) Console.WriteLine("D is held");
 
         // --- キーボード: 「押した瞬間」だけ反応させたい場合(ジャンプなど連打防止したい時) ---
         if (GameScriptC.Keyboard.IsKeyTriger(ConsoleKey.Spacebar))
@@ -66,8 +63,56 @@ public class PlayerController : Templet
     //           z += (gp.LeftThumbY / 32768f) * speed * dt;
     //   }
 
+
+    // ==============================================
+    // 接触イベント（C++のJolt → ScriptRuntime → ここ）
+    // ==============================================
+    // 届いているか確認するためのテスト実装。
+    // 何かにぶつかったらコンソールにログを出して、上に飛ぶ。
+    private float m_jumpCooldown = 0.0f;
+    private const float kJumpVelocity = 20.0f;   // 飛び上がる速度(Y)
+    private const float kJumpInterval = 0.4f;    // 連続で跳ねすぎないための間隔(秒)
+
+    public override void OnCollisionEnter(CollisionInfo other)
+    {
+        Console.WriteLine($"[PlayerController] OnCollisionEnter  相手='{other.EntityName}'  id={other.EntityId}");
+        TryJump();
+    }
+
+    public override void OnTriggerEnter(CollisionInfo other)
+    {
+        Console.WriteLine($"[PlayerController] OnTriggerEnter  相手='{other.EntityName}'  id={other.EntityId}");
+        TryJump();
+    }
+
+    // ※ Exit系はC++側がまだ送っていない（OnContactRemovedが未実装）ので現状呼ばれない
+    public override void OnCollisionExit(CollisionInfo other)
+    {
+        Console.WriteLine($"[PlayerController] OnCollisionExit  相手='{other.EntityName}'");
+    }
+
+    public override void OnTriggerExit(CollisionInfo other)
+    {
+        Console.WriteLine($"[PlayerController] OnTriggerExit  相手='{other.EntityName}'");
+    }
+
+    private void TryJump()
+    {
+        if (m_jumpCooldown > 0.0f)
+        {
+            Console.WriteLine("[PlayerController]   → クールダウン中なので飛ばない（イベント自体は届いている）");
+            return;
+        }
+        m_jumpCooldown = kJumpInterval;
+        Jump(kJumpVelocity);
+        Console.WriteLine($"[PlayerController]   → 上に飛ぶ！ vy={kJumpVelocity}");
+    }
+
     public override void GetMoveVelocity(ref float vx, ref float vz, float dt)
     {
+        // ジャンプのクールダウンをここで減らす（dtが来るのがこの関数だけなので）
+        if (m_jumpCooldown > 0.0f) m_jumpCooldown -= dt;
+
         const float speed = 15.0f;
 
         if (IsKeyDown(ConsoleKey.A)) vx -= speed;

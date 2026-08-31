@@ -17,6 +17,37 @@ void GameScript::Start() {
     }
 }
 
+// ───────── 物理イベントの転送 ─────────
+// Jolt が接触を検知 → FacadeJolt::DispatchEvents() → ここ → ScriptRuntime に積む
+// → 同フレームの ScriptRuntime::Tick() でパイプ越しに C# の OnXxx が呼ばれる
+void GameScript::OnTriggerEnter(Entity* other) {
+    if (m_instanceId < 0 || !other) return;
+    ScriptRuntime::GetInstance()->QueuePhysicsEvent(
+        m_instanceId, ScriptPhysicsEventType::TriggerEnter, other);
+}
+
+void GameScript::OnTriggerExit(Entity* other) {
+    if (m_instanceId < 0 || !other) return;
+    ScriptRuntime::GetInstance()->QueuePhysicsEvent(
+        m_instanceId, ScriptPhysicsEventType::TriggerExit, other);
+}
+
+void GameScript::OnCollisionEnter(Entity* other) {
+    if (m_instanceId < 0 || !other) return;
+    char log[320];
+    sprintf_s(log, "[GameScript] OnCollisionEnter: id=%d other='%s'",
+        m_instanceId, other->displayName.c_str());
+    LOG(log);
+    ScriptRuntime::GetInstance()->QueuePhysicsEvent(
+        m_instanceId, ScriptPhysicsEventType::CollisionEnter, other);
+}
+
+void GameScript::OnCollisionExit(Entity* other) {
+    if (m_instanceId < 0 || !other) return;
+    ScriptRuntime::GetInstance()->QueuePhysicsEvent(
+        m_instanceId, ScriptPhysicsEventType::CollisionExit, other);
+}
+
 void GameScript::StartScript() {
     if (!m_vsOpened) {
         m_vsOpened = true;
