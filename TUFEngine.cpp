@@ -360,6 +360,36 @@ Matrix4x4 TUFEngine::GetSpriteUVTransformMatrix() const {
 #pragma region ImGuiの初期化関数基本的に ImGui を初期化していくつかのウィンドウを作成している
 
 #ifdef USE_IMGUI
+
+void TUFEngine::ImGuiSrvAlloc(
+	ImGui_ImplDX12_InitInfo* info,
+	D3D12_CPU_DESCRIPTOR_HANDLE* cpu,
+	D3D12_GPU_DESCRIPTOR_HANDLE* gpu)
+{
+	auto* engine = static_cast<TUFEngine*>(info->UserData);
+
+	const UINT descriptorSize =
+		engine->device->GetDescriptorHandleIncrementSize(
+			D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+
+	const uint32_t index = engine->m_imguiSrvNext++;
+	assert(index < TextureManager::IMGUI_RESERVED);
+
+	*cpu = engine->srvDescriptorHeap->GetCPUDescriptorHandleForHeapStart();
+	cpu->ptr += static_cast<SIZE_T>(index) * descriptorSize;
+
+	*gpu = engine->srvDescriptorHeap->GetGPUDescriptorHandleForHeapStart();
+	gpu->ptr += static_cast<UINT64>(index) * descriptorSize;
+}
+
+void TUFEngine::ImGuiSrvFree(
+	ImGui_ImplDX12_InitInfo*,
+	D3D12_CPU_DESCRIPTOR_HANDLE,
+	D3D12_GPU_DESCRIPTOR_HANDLE)
+{
+	// 今回は終了まで確保したままにする。
+}
+
 void TUFEngine::InitializeImGui(HWND hwnd) {
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -396,8 +426,10 @@ void TUFEngine::InitializeImGui(HWND hwnd) {
 	initInfo.RTVFormat = swapChainDesc.Format;
 	initInfo.SrvDescriptorHeap = srvDescriptorHeap.Get();
 #ifndef IMGUI_DISABLE_OBSOLETE_FUNCTIONS
-	initInfo.LegacySingleSrvCpuDescriptor = srvDescriptorHeap->GetCPUDescriptorHandleForHeapStart();
-	initInfo.LegacySingleSrvGpuDescriptor = srvDescriptorHeap->GetGPUDescriptorHandleForHeapStart();
+	initInfo.SrvDescriptorHeap = srvDescriptorHeap.Get();
+	initInfo.UserData = this;
+	initInfo.SrvDescriptorAllocFn = TUFEngine::ImGuiSrvAlloc;
+	initInfo.SrvDescriptorFreeFn = TUFEngine::ImGuiSrvFree;
 #endif
 
 
