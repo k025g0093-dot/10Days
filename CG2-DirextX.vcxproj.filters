@@ -1,6 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{20b1af40-4eaf-4356-a7c7-9176a168dde0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core">
+      <UniqueIdentifier>{c23fa2ce-80b4-4220-8bb3-300c3314eb54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Math">
+      <UniqueIdentifier>{a5942d01-6ac4-4b0d-b208-3b5313bc0f68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Graphics">
+      <UniqueIdentifier>{a8505859-9d96-4e76-8905-5c7a1a835f22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Model">
+      <UniqueIdentifier>{2767d340-7525-4758-b501-9ab8bd40a231}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\ECS">
+      <UniqueIdentifier>{17152a3b-b09d-42eb-832d-79eba052e5d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Physics">
+      <UniqueIdentifier>{62991196-be51-4c70-9f87-1520f18b0927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Script">
+      <UniqueIdentifier>{c715d0f4-9729-4ac0-beef-7ef94c537591}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Audio">
+      <UniqueIdentifier>{904501af-929c-47ef-af4a-75c2af0a3e51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Editor">
+      <UniqueIdentifier>{11a73cd7-d294-40a5-b3c6-55ca88694bf0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ソース ファイル">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -123,47 +153,47 @@
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="TUFEngine.cpp">
-      <Filter>ソース ファイル\TUFengine</Filter>
+    <ClCompile Include="Engine\Core\TUFEngine.cpp">
+      <Filter>Engine\Core</Filter>
     </ClCompile>
-    <ClCompile Include="ConvertString.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\.cpp</Filter>
+    <ClCompile Include="Engine\Core\ConvertString.cpp">
+      <Filter>Engine\Core</Filter>
     </ClCompile>
-    <ClCompile Include="DXC.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\.cpp</Filter>
+    <ClCompile Include="Engine\Graphics\DXC.cpp">
+      <Filter>Engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="LogSistem.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\.cpp</Filter>
+    <ClCompile Include="Engine\Core\LogSistem.cpp">
+      <Filter>Engine\Core</Filter>
     </ClCompile>
-    <ClCompile Include="PSO.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\.cpp</Filter>
+    <ClCompile Include="Engine\Graphics\PSO.cpp">
+      <Filter>Engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="VertexResource.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\.cpp</Filter>
+    <ClCompile Include="Engine\Graphics\VertexResource.cpp">
+      <Filter>Engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Vector.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\Vector</Filter>
+    <ClCompile Include="Engine\Math\Vector.cpp">
+      <Filter>Engine\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Sphere.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群\各種図形</Filter>
+    <ClCompile Include="Engine\Model\Sphere.cpp">
+      <Filter>Engine\Model</Filter>
     </ClCompile>
-    <ClCompile Include="Model.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群</Filter>
+    <ClCompile Include="Engine\Model\Model.cpp">
+      <Filter>Engine\Model</Filter>
     </ClCompile>
-    <ClCompile Include="TextureManager.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\Texture</Filter>
+    <ClCompile Include="Engine\Graphics\TextureManager.cpp">
+      <Filter>Engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="MeshModel.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群\3Dmodel</Filter>
+    <ClCompile Include="Engine\Model\MeshModel.cpp">
+      <Filter>Engine\Model</Filter>
     </ClCompile>
-    <ClCompile Include="TriangleModel.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群\各種図形</Filter>
+    <ClCompile Include="Engine\Model\TriangleModel.cpp">
+      <Filter>Engine\Model</Filter>
     </ClCompile>
-    <ClCompile Include="DynamicMesh.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群\板ポリ</Filter>
+    <ClCompile Include="Engine\Model\DynamicMesh.cpp">
+      <Filter>Engine\Model</Filter>
     </ClCompile>
-    <ClCompile Include="WaveGrid.cpp">
-      <Filter>外部から持ってきた関数やファイル</Filter>
+    <ClCompile Include="Engine\Model\WaveGrid.cpp">
+      <Filter>Engine\Model</Filter>
     </ClCompile>
     <ClCompile Include="externals\imgui\imgui.cpp">
       <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\ImGui\外部ファイルのImGui</Filter>
@@ -186,92 +216,92 @@
     <ClCompile Include="externals\imgui\imgui_tables.cpp">
       <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\ImGui\外部ファイルのImGui</Filter>
     </ClCompile>
-    <ClCompile Include="ImGuiWindow.cpp">
-      <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\ImGui</Filter>
+    <ClCompile Include="Engine\Editor\ImGuiWindow.cpp">
+      <Filter>Engine\Editor</Filter>
     </ClCompile>
-    <ClCompile Include="ImGuiUIManager.cpp">
-      <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\ImGui</Filter>
+    <ClCompile Include="Engine\Editor\ImGuiUIManager.cpp">
+      <Filter>Engine\Editor</Filter>
     </ClCompile>
-    <ClCompile Include="DynamicMeshModel.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群\板ポリ</Filter>
+    <ClCompile Include="Engine\Model\DynamicMeshModel.cpp">
+      <Filter>Engine\Model</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\Camera</Filter>
+    <ClCompile Include="Engine\Graphics\Camera.cpp">
+      <Filter>Engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="ImGuiCamera.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\Camera</Filter>
+    <ClCompile Include="Engine\Editor\ImGuiCamera.cpp">
+      <Filter>Engine\Editor</Filter>
     </ClCompile>
-    <ClCompile Include="ImGuiDebug.cpp">
-      <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\ImGui\デバック情報をまとめるGUI</Filter>
+    <ClCompile Include="Engine\Editor\ImGuiDebug.cpp">
+      <Filter>Engine\Editor</Filter>
     </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\Texture</Filter>
+    <ClCompile Include="Engine\Graphics\Sprite.cpp">
+      <Filter>Engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceObject.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\オブジェクトのリリース関数</Filter>
+    <ClCompile Include="Engine\Core\ResourceObject.cpp">
+      <Filter>Engine\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Sound.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\サウンドクラス</Filter>
+    <ClCompile Include="Engine\Audio\Sound.cpp">
+      <Filter>Engine\Audio</Filter>
     </ClCompile>
-    <ClCompile Include="DebugCamer.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\Camera\DebugCamera</Filter>
+    <ClCompile Include="Engine\Graphics\DebugCamer.cpp">
+      <Filter>Engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="ImGuiSpriteUV.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\Texture\専用GUI</Filter>
+    <ClCompile Include="Engine\Editor\ImGuiSpriteUV.cpp">
+      <Filter>Engine\Editor</Filter>
     </ClCompile>
-    <ClCompile Include="ImGuiContentBrowser.cpp">
-      <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\ImGui\アセット管理用GUI</Filter>
+    <ClCompile Include="Engine\Editor\ImGuiContentBrowser.cpp">
+      <Filter>Engine\Editor</Filter>
     </ClCompile>
     <ClCompile Include="externals\imgui\ImGuizmo.cpp">
       <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\ImGui\imGuiZmo</Filter>
     </ClCompile>
-    <ClCompile Include="LightManager.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\ライティングの設定を行うクラス</Filter>
+    <ClCompile Include="Engine\Graphics\LightManager.cpp">
+      <Filter>Engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="GpuDrivenRenderer.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\GPU駆動のための者たち</Filter>
+    <ClCompile Include="Engine\Graphics\GpuDrivenRenderer.cpp">
+      <Filter>Engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Create3DObjectOBB.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\各3Dオブジェクトの当たり判定かしか部分</Filter>
+    <ClCompile Include="Engine\Model\Create3DObjectOBB.cpp">
+      <Filter>Engine\Model</Filter>
     </ClCompile>
-    <ClCompile Include="WaveGridPSO.cpp">
-      <Filter>外部から持ってきた関数やファイル</Filter>
+    <ClCompile Include="Engine\Model\WaveGridPSO.cpp">
+      <Filter>Engine\Model</Filter>
     </ClCompile>
-    <ClCompile Include="FBXLoader.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群\Load関数</Filter>
+    <ClCompile Include="Engine\Model\FBXLoader.cpp">
+      <Filter>Engine\Model</Filter>
     </ClCompile>
-    <ClCompile Include="ModelManager.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係</Filter>
+    <ClCompile Include="Engine\Model\ModelManager.cpp">
+      <Filter>Engine\Model</Filter>
     </ClCompile>
-    <ClCompile Include="EntityComponent.cpp">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp</Filter>
+    <ClCompile Include="Engine\ECS\EntityComponent.cpp">
+      <Filter>Engine\ECS</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群</Filter>
+    <ClCompile Include="Engine\ECS\Component.cpp">
+      <Filter>Engine\ECS</Filter>
     </ClCompile>
-    <ClCompile Include="Line.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群\各種図形</Filter>
+    <ClCompile Include="Engine\Graphics\Line.cpp">
+      <Filter>Engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="MonoBehaviour.cpp">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群</Filter>
+    <ClCompile Include="Engine\ECS\MonoBehaviour.cpp">
+      <Filter>Engine\ECS</Filter>
     </ClCompile>
-    <ClCompile Include="EntityManager.cpp">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp</Filter>
+    <ClCompile Include="Engine\ECS\EntityManager.cpp">
+      <Filter>Engine\ECS</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp</Filter>
+    <ClCompile Include="Engine\ECS\Entity.cpp">
+      <Filter>Engine\ECS</Filter>
     </ClCompile>
-    <ClCompile Include="ShadowMapBuffer.cpp">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\陰に関する処理</Filter>
+    <ClCompile Include="Engine\Graphics\ShadowMapBuffer.cpp">
+      <Filter>Engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="FacadeJolt.cpp">
-      <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\jolt（最強の物理エンジン）</Filter>
+    <ClCompile Include="Engine\Physics\FacadeJolt.cpp">
+      <Filter>Engine\Physics</Filter>
     </ClCompile>
-    <ClCompile Include="ScriptRuntime.cpp">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp\Addコンポーネントによって追加されるもの\colliderのコンポーネント</Filter>
+    <ClCompile Include="Engine\Script\ScriptRuntime.cpp">
+      <Filter>Engine\Script</Filter>
     </ClCompile>
-    <ClCompile Include="GameScript.cpp">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp\Addコンポーネントによって追加されるもの\colliderのコンポーネント</Filter>
+    <ClCompile Include="Engine\Script\GameScript.cpp">
+      <Filter>Engine\Script</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -288,65 +318,65 @@
     <FxCompile Include="shadow.VS.hlsl" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TUFEngine.h">
-      <Filter>ソース ファイル\TUFengine</Filter>
+    <ClInclude Include="Engine\Core\TUFEngine.h">
+      <Filter>Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="ConvertString.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\.h</Filter>
+    <ClInclude Include="Engine\Core\ConvertString.h">
+      <Filter>Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="DXC.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\.h</Filter>
+    <ClInclude Include="Engine\Graphics\DXC.h">
+      <Filter>Engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="LogSistem.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\.h</Filter>
+    <ClInclude Include="Engine\Core\LogSistem.h">
+      <Filter>Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="PSO.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\.h</Filter>
+    <ClInclude Include="Engine\Graphics\PSO.h">
+      <Filter>Engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="VertexResource.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\.h</Filter>
+    <ClInclude Include="Engine\Graphics\VertexResource.h">
+      <Filter>Engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Vector.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\Vector</Filter>
+    <ClInclude Include="Engine\Math\Vector.h">
+      <Filter>Engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="allVector.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\Vector</Filter>
+    <ClInclude Include="Engine\Math\allVector.h">
+      <Filter>Engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\Vector</Filter>
+    <ClInclude Include="Engine\Math\Vector2.h">
+      <Filter>Engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Vector3.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\Vector</Filter>
+    <ClInclude Include="Engine\Math\Vector3.h">
+      <Filter>Engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Vector4.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\Vector</Filter>
+    <ClInclude Include="Engine\Math\Vector4.h">
+      <Filter>Engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\Input</Filter>
+    <ClInclude Include="Engine\Core\Input.h">
+      <Filter>Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="allShapesModel.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群\各種図形</Filter>
+    <ClInclude Include="Engine\Model\allShapesModel.h">
+      <Filter>Engine\Model</Filter>
     </ClInclude>
-    <ClInclude Include="Sphere.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群\各種図形</Filter>
+    <ClInclude Include="Engine\Model\Sphere.h">
+      <Filter>Engine\Model</Filter>
     </ClInclude>
-    <ClInclude Include="Model.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群</Filter>
+    <ClInclude Include="Engine\Model\Model.h">
+      <Filter>Engine\Model</Filter>
     </ClInclude>
-    <ClInclude Include="TextureManager.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\Texture</Filter>
+    <ClInclude Include="Engine\Graphics\TextureManager.h">
+      <Filter>Engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="MeshModel.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群\3Dmodel</Filter>
+    <ClInclude Include="Engine\Model\MeshModel.h">
+      <Filter>Engine\Model</Filter>
     </ClInclude>
-    <ClInclude Include="TriangleModel.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群\各種図形</Filter>
+    <ClInclude Include="Engine\Model\TriangleModel.h">
+      <Filter>Engine\Model</Filter>
     </ClInclude>
-    <ClInclude Include="DynamicMesh.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群\板ポリ</Filter>
+    <ClInclude Include="Engine\Model\DynamicMesh.h">
+      <Filter>Engine\Model</Filter>
     </ClInclude>
-    <ClInclude Include="WaveGrid.h">
-      <Filter>外部から持ってきた関数やファイル</Filter>
+    <ClInclude Include="Engine\Model\WaveGrid.h">
+      <Filter>Engine\Model</Filter>
     </ClInclude>
     <ClInclude Include="externals\imgui\imconfig.h">
       <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\ImGui\外部ファイルのImGui</Filter>
@@ -372,47 +402,47 @@
     <ClInclude Include="externals\imgui\imstb_truetype.h">
       <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\ImGui\外部ファイルのImGui</Filter>
     </ClInclude>
-    <ClInclude Include="AllIncludeHeder.h">
-      <Filter>ソース ファイル\TUFengine</Filter>
+    <ClInclude Include="Engine\Core\AllIncludeHeder.h">
+      <Filter>Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="ImGuiWindow.h">
-      <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\ImGui</Filter>
+    <ClInclude Include="Engine\Editor\ImGuiWindow.h">
+      <Filter>Engine\Editor</Filter>
     </ClInclude>
-    <ClInclude Include="ImGuiUIManager.h">
-      <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\ImGui</Filter>
+    <ClInclude Include="Engine\Editor\ImGuiUIManager.h">
+      <Filter>Engine\Editor</Filter>
     </ClInclude>
-    <ClInclude Include="DynamicMeshModel.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群\板ポリ</Filter>
+    <ClInclude Include="Engine\Model\DynamicMeshModel.h">
+      <Filter>Engine\Model</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-        <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\Camera</Filter>
-      </ClInclude>
-    <ClInclude Include="CameraComponent.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp\Addコンポーネントによって追加されるもの</Filter>
+    <ClInclude Include="Engine\Graphics\Camera.h">
+      <Filter>Engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="ImGuiCamera.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\Camera</Filter>
+    <ClInclude Include="Engine\ECS\cameraComponent.h">
+      <Filter>Engine\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="ImGuiDebug.h">
-      <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\ImGui\デバック情報をまとめるGUI</Filter>
+    <ClInclude Include="Engine\Editor\ImGuiCamera.h">
+      <Filter>Engine\Editor</Filter>
     </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\Texture</Filter>
+    <ClInclude Include="Engine\Editor\ImGuiDebug.h">
+      <Filter>Engine\Editor</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceObject.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\オブジェクトのリリース関数</Filter>
+    <ClInclude Include="Engine\Graphics\Sprite.h">
+      <Filter>Engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Sound.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\サウンドクラス</Filter>
+    <ClInclude Include="Engine\Core\ResourceObject.h">
+      <Filter>Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="DebugCamer.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\Camera\DebugCamera</Filter>
+    <ClInclude Include="Engine\Audio\Sound.h">
+      <Filter>Engine\Audio</Filter>
     </ClInclude>
-    <ClInclude Include="ImGuiSpriteUV.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\Texture\専用GUI</Filter>
+    <ClInclude Include="Engine\Graphics\DebugCamer.h">
+      <Filter>Engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="ImGuiContentBrowser.h">
-      <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\ImGui\アセット管理用GUI</Filter>
+    <ClInclude Include="Engine\Editor\ImGuiSpriteUV.h">
+      <Filter>Engine\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Editor\ImGuiContentBrowser.h">
+      <Filter>Engine\Editor</Filter>
     </ClInclude>
     <ClInclude Include="externals\nlohmann\json.hpp">
       <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\json</Filter>
@@ -420,50 +450,53 @@
     <ClInclude Include="externals\imgui\ImGuizmo.h">
       <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\ImGui\imGuiZmo</Filter>
     </ClInclude>
-    <ClInclude Include="LightManager.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\ライティングの設定を行うクラス</Filter>
+    <ClInclude Include="Engine\Graphics\LightManager.h">
+      <Filter>Engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="GpuDrivenRenderer.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\GPU駆動のための者たち</Filter>
+    <ClInclude Include="Engine\Graphics\GpuDrivenRenderer.h">
+      <Filter>Engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="GpuDrivenTypes.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\GPU駆動のための者たち</Filter>
+    <ClInclude Include="Engine\Graphics\GpuDrivenTypes.h">
+      <Filter>Engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Create3DObjectOBB.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\各3Dオブジェクトの当たり判定かしか部分</Filter>
+    <ClInclude Include="Engine\Model\Create3DObjectOBB.h">
+      <Filter>Engine\Model</Filter>
     </ClInclude>
-    <ClInclude Include="WaveGridPSO.h">
-      <Filter>外部から持ってきた関数やファイル</Filter>
+    <ClInclude Include="Engine\Model\WaveGridPSO.h">
+      <Filter>Engine\Model</Filter>
     </ClInclude>
-    <ClInclude Include="FBXLoader.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群\Load関数</Filter>
+    <ClInclude Include="Engine\Model\FBXLoader.h">
+      <Filter>Engine\Model</Filter>
     </ClInclude>
-    <ClInclude Include="ModelManager.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係</Filter>
+    <ClInclude Include="Engine\Model\ModelManager.h">
+      <Filter>Engine\Model</Filter>
     </ClInclude>
-    <ClInclude Include="EntityComponent.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp</Filter>
+    <ClInclude Include="Engine\ECS\EntityComponent.h">
+      <Filter>Engine\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群</Filter>
+    <ClInclude Include="Engine\ECS\Component.h">
+      <Filter>Engine\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="AllComponent.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群</Filter>
+    <ClInclude Include="Engine\ECS\AllComponent.h">
+      <Filter>Engine\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="Line.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\描画物関係\各種モデル群\各種図形</Filter>
+    <ClInclude Include="Engine\Graphics\Line.h">
+      <Filter>Engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="MonoBehaviour.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群</Filter>
+    <ClInclude Include="Engine\ECS\Transform.h">
+      <Filter>Engine\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="LearnComponent.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp\Addコンポーネントによって追加されるもの</Filter>
+    <ClInclude Include="Engine\ECS\MonoBehaviour.h">
+      <Filter>Engine\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="MeshFilter.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp\Addコンポーネントによって追加されるもの</Filter>
+    <ClInclude Include="Engine\ECS\LearnComponent.h">
+      <Filter>Engine\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="GameScript.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp\Addコンポーネントによって追加されるもの</Filter>
+    <ClInclude Include="Engine\ECS\MeshFilter.h">
+      <Filter>Engine\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Script\GameScript.h">
+      <Filter>Engine\Script</Filter>
     </ClInclude>
     <ClInclude Include="externals\scripting\coreclr_delegates.h">
       <Filter>外部から持ってきた関数やファイル</Filter>
@@ -471,41 +504,41 @@
     <ClInclude Include="externals\scripting\hostfxr.h">
       <Filter>外部から持ってきた関数やファイル</Filter>
     </ClInclude>
-    <ClInclude Include="EntityManager.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp</Filter>
+    <ClInclude Include="Engine\ECS\EntityManager.h">
+      <Filter>Engine\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp</Filter>
+    <ClInclude Include="Engine\ECS\Entity.h">
+      <Filter>Engine\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="ShadowMapBuffer.h">
-      <Filter>ソース ファイル\TUFengine\エンジンの基礎部分\陰に関する処理</Filter>
+    <ClInclude Include="Engine\Graphics\ShadowMapBuffer.h">
+      <Filter>Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="JoltAllinclude.h">
-      <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\jolt（最強の物理エンジン）</Filter>
+    <ClInclude Include="Engine\Physics\JoltAllinclude.h">
+      <Filter>Engine\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="FacadeJolt.h">
-      <Filter>ソース ファイル\TUFengine\GUIなどの外部ライブラリ\jolt（最強の物理エンジン）</Filter>
+    <ClInclude Include="Engine\Physics\FacadeJolt.h">
+      <Filter>Engine\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="Collider.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp\Addコンポーネントによって追加されるもの</Filter>
+    <ClInclude Include="Engine\Physics\Collider.h">
+      <Filter>Engine\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="BoxCollider.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp\Addコンポーネントによって追加されるもの\colliderのコンポーネント</Filter>
+    <ClInclude Include="Engine\Physics\BoxCollider.h">
+      <Filter>Engine\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="SphereCollider.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp\Addコンポーネントによって追加されるもの\colliderのコンポーネント</Filter>
+    <ClInclude Include="Engine\Physics\SphereCollider.h">
+      <Filter>Engine\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="ConvexHullCollider.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp\Addコンポーネントによって追加されるもの\colliderのコンポーネント</Filter>
+    <ClInclude Include="Engine\Physics\ConvexHullCollider.h">
+      <Filter>Engine\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="Rigidbody.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp\Addコンポーネントによって追加されるもの\colliderのコンポーネント</Filter>
+    <ClInclude Include="Engine\Physics\Rigidbody.h">
+      <Filter>Engine\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="ScriptRuntime.h">
-      <Filter>ソース ファイル\TUFengine\コンポーネントクラス群\EntityConp\Addコンポーネントによって追加されるもの\colliderのコンポーネント</Filter>
+    <ClInclude Include="Engine\Script\ScriptRuntime.h">
+      <Filter>Engine\Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
