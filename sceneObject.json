@@ -117,6 +117,52 @@
                 1.0000001192092896
             ],
             "scriptName": "PlayerController"
+        },
+        {
+            "displayName": "resources//Head.obj",
+            "modelPath": "resources//Head.obj",
+            "obb": {
+                "center": [
+                    0.0,
+                    0.5708030462265015,
+                    0.0
+                ],
+                "orientationX": [
+                    1.0,
+                    0.0,
+                    0.0
+                ],
+                "orientationY": [
+                    0.0,
+                    1.0,
+                    0.0
+                ],
+                "orientationZ": [
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "size": [
+                    0.40817201137542725,
+                    0.4872930347919464,
+                    0.40817201137542725
+                ]
+            },
+            "position": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ]
         }
     ]
 }
