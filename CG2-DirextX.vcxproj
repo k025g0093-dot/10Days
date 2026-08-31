@@ -55,7 +55,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>./externals/assimp/include;./externals/Jolt/include;./externals/SDL/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Engine\Core;$(ProjectDir)Engine\Math;$(ProjectDir)Engine\Graphics;$(ProjectDir)Engine\Model;$(ProjectDir)Engine\ECS;$(ProjectDir)Engine\Physics;$(ProjectDir)Engine\Script;$(ProjectDir)Engine\Audio;$(ProjectDir)Engine\Editor;./externals/assimp/include;./externals/Jolt/include;./externals/SDL/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -81,7 +81,7 @@
       <AdditionalOptions>/utf-8 %(AdditionalOptions)/utf-8</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>./externals/assimp/include;./externals/Jolt/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Engine\Core;$(ProjectDir)Engine\Math;$(ProjectDir)Engine\Graphics;$(ProjectDir)Engine\Model;$(ProjectDir)Engine\ECS;$(ProjectDir)Engine\Physics;$(ProjectDir)Engine\Script;$(ProjectDir)Engine\Audio;$(ProjectDir)Engine\Editor;./externals/assimp/include;./externals/Jolt/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -97,21 +97,21 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Component.cpp" />
-    <ClCompile Include="ConvertString.cpp" />
-    <ClCompile Include="Create3DObjectOBB.cpp" />
-    <ClCompile Include="DebugCamer.cpp" />
-    <ClCompile Include="DXC.cpp" />
-    <ClCompile Include="DynamicMesh.cpp" />
-    <ClCompile Include="DynamicMeshModel.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="EntityComponent.cpp" />
-    <ClCompile Include="EntityManager.cpp" />
-    <ClCompile Include="FacadeJolt.cpp" />
-    <ClCompile Include="FBXLoader.cpp" />
-    <ClCompile Include="GameScript.cpp" />
-    <ClCompile Include="GpuDrivenRenderer.cpp" />
+    <ClCompile Include="Engine\Graphics\Camera.cpp" />
+    <ClCompile Include="Engine\ECS\Component.cpp" />
+    <ClCompile Include="Engine\Core\ConvertString.cpp" />
+    <ClCompile Include="Engine\Model\Create3DObjectOBB.cpp" />
+    <ClCompile Include="Engine\Graphics\DebugCamer.cpp" />
+    <ClCompile Include="Engine\Graphics\DXC.cpp" />
+    <ClCompile Include="Engine\Model\DynamicMesh.cpp" />
+    <ClCompile Include="Engine\Model\DynamicMeshModel.cpp" />
+    <ClCompile Include="Engine\ECS\Entity.cpp" />
+    <ClCompile Include="Engine\ECS\EntityComponent.cpp" />
+    <ClCompile Include="Engine\ECS\EntityManager.cpp" />
+    <ClCompile Include="Engine\Physics\FacadeJolt.cpp" />
+    <ClCompile Include="Engine\Model\FBXLoader.cpp" />
+    <ClCompile Include="Engine\Script\GameScript.cpp" />
+    <ClCompile Include="Engine\Graphics\GpuDrivenRenderer.cpp" />
     <ClCompile Include="externals\imgui\imgui.cpp" />
     <ClCompile Include="externals\imgui\ImGuizmo.cpp" />
     <ClCompile Include="externals\imgui\imgui_demo.cpp" />
@@ -120,34 +120,34 @@
     <ClCompile Include="externals\imgui\imgui_impl_win32.cpp" />
     <ClCompile Include="externals\imgui\imgui_tables.cpp" />
     <ClCompile Include="externals\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="ImGuiCamera.cpp" />
-    <ClCompile Include="ImGuiContentBrowser.cpp" />
-    <ClCompile Include="ImGuiDebug.cpp" />
-    <ClCompile Include="ImGuiSpriteUV.cpp" />
-    <ClCompile Include="ImGuiUIManager.cpp" />
-    <ClCompile Include="ImGuiWindow.cpp" />
-    <ClCompile Include="Line.cpp" />
-    <ClCompile Include="LightManager.cpp" />
-    <ClCompile Include="LogSistem.cpp" />
+    <ClCompile Include="Engine\Editor\ImGuiCamera.cpp" />
+    <ClCompile Include="Engine\Editor\ImGuiContentBrowser.cpp" />
+    <ClCompile Include="Engine\Editor\ImGuiDebug.cpp" />
+    <ClCompile Include="Engine\Editor\ImGuiSpriteUV.cpp" />
+    <ClCompile Include="Engine\Editor\ImGuiUIManager.cpp" />
+    <ClCompile Include="Engine\Editor\ImGuiWindow.cpp" />
+    <ClCompile Include="Engine\Graphics\Line.cpp" />
+    <ClCompile Include="Engine\Graphics\LightManager.cpp" />
+    <ClCompile Include="Engine\Core\LogSistem.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ModelManager.cpp" />
-    <ClCompile Include="MeshModel.cpp" />
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="MonoBehaviour.cpp" />
-    <ClCompile Include="PSO.cpp" />
-    <ClCompile Include="ResourceObject.cpp" />
-    <ClCompile Include="ScriptRuntime.cpp" />
-    <ClCompile Include="ShadowMapBuffer.cpp" />
-    <ClCompile Include="Sound.cpp" />
-    <ClCompile Include="Sphere.cpp" />
-    <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="TextureManager.cpp" />
-    <ClCompile Include="TriangleModel.cpp" />
-    <ClCompile Include="TUFEngine.cpp" />
-    <ClCompile Include="Vector.cpp" />
-    <ClCompile Include="VertexResource.cpp" />
-    <ClCompile Include="WaveGrid.cpp" />
-    <ClCompile Include="WaveGridPSO.cpp" />
+    <ClCompile Include="Engine\Model\ModelManager.cpp" />
+    <ClCompile Include="Engine\Model\MeshModel.cpp" />
+    <ClCompile Include="Engine\Model\Model.cpp" />
+    <ClCompile Include="Engine\ECS\MonoBehaviour.cpp" />
+    <ClCompile Include="Engine\Graphics\PSO.cpp" />
+    <ClCompile Include="Engine\Core\ResourceObject.cpp" />
+    <ClCompile Include="Engine\Script\ScriptRuntime.cpp" />
+    <ClCompile Include="Engine\Graphics\ShadowMapBuffer.cpp" />
+    <ClCompile Include="Engine\Audio\Sound.cpp" />
+    <ClCompile Include="Engine\Model\Sphere.cpp" />
+    <ClCompile Include="Engine\Graphics\Sprite.cpp" />
+    <ClCompile Include="Engine\Graphics\TextureManager.cpp" />
+    <ClCompile Include="Engine\Model\TriangleModel.cpp" />
+    <ClCompile Include="Engine\Core\TUFEngine.cpp" />
+    <ClCompile Include="Engine\Math\Vector.cpp" />
+    <ClCompile Include="Engine\Graphics\VertexResource.cpp" />
+    <ClCompile Include="Engine\Model\WaveGrid.cpp" />
+    <ClCompile Include="Engine\Model\WaveGridPSO.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="GpuDrivenIndirectArgs.CS.hlsl">
@@ -218,25 +218,25 @@
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AllComponent.h" />
-    <ClInclude Include="AllIncludeHeder.h" />
-    <ClInclude Include="allShapesModel.h" />
-    <ClInclude Include="allVector.h" />
-    <ClInclude Include="BoxCollider.h" />
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="CameraComponent.h" />
-    <ClInclude Include="Collider.h" />
-    <ClInclude Include="Component.h" />
-    <ClInclude Include="ConvertString.h" />
-    <ClInclude Include="ConvexHullCollider.h" />
-    <ClInclude Include="Create3DObjectOBB.h" />
-    <ClInclude Include="DebugCamer.h" />
-    <ClInclude Include="DXC.h" />
-    <ClInclude Include="DynamicMesh.h" />
-    <ClInclude Include="DynamicMeshModel.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="EntityComponent.h" />
-    <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="Engine\ECS\AllComponent.h" />
+    <ClInclude Include="Engine\Core\AllIncludeHeder.h" />
+    <ClInclude Include="Engine\Model\allShapesModel.h" />
+    <ClInclude Include="Engine\Math\allVector.h" />
+    <ClInclude Include="Engine\Physics\BoxCollider.h" />
+    <ClInclude Include="Engine\Graphics\Camera.h" />
+    <ClInclude Include="Engine\ECS\cameraComponent.h" />
+    <ClInclude Include="Engine\Physics\Collider.h" />
+    <ClInclude Include="Engine\ECS\Component.h" />
+    <ClInclude Include="Engine\Core\ConvertString.h" />
+    <ClInclude Include="Engine\Physics\ConvexHullCollider.h" />
+    <ClInclude Include="Engine\Model\Create3DObjectOBB.h" />
+    <ClInclude Include="Engine\Graphics\DebugCamer.h" />
+    <ClInclude Include="Engine\Graphics\DXC.h" />
+    <ClInclude Include="Engine\Model\DynamicMesh.h" />
+    <ClInclude Include="Engine\Model\DynamicMeshModel.h" />
+    <ClInclude Include="Engine\ECS\Entity.h" />
+    <ClInclude Include="Engine\ECS\EntityComponent.h" />
+    <ClInclude Include="Engine\ECS\EntityManager.h" />
     <ClInclude Include="externals\imgui\imconfig.h" />
     <ClInclude Include="externals\imgui\imgui.h" />
     <ClInclude Include="externals\imgui\ImGuizmo.h" />
@@ -249,48 +249,49 @@
     <ClInclude Include="externals\nlohmann\json.hpp" />
     <ClInclude Include="externals\scripting\coreclr_delegates.h" />
     <ClInclude Include="externals\scripting\hostfxr.h" />
-    <ClInclude Include="FacadeJolt.h" />
-    <ClInclude Include="FBXLoader.h" />
-    <ClInclude Include="GameScript.h" />
-    <ClInclude Include="GpuDrivenRenderer.h" />
-    <ClInclude Include="GpuDrivenTypes.h" />
-    <ClInclude Include="ImGuiCamera.h" />
-    <ClInclude Include="ImGuiContentBrowser.h" />
-    <ClInclude Include="ImGuiDebug.h" />
-    <ClInclude Include="ImGuiSpriteUV.h" />
-    <ClInclude Include="ImGuiUIManager.h" />
-    <ClInclude Include="ImGuiWindow.h" />
-    <ClInclude Include="Input.h" />
-    <ClInclude Include="JoltAllinclude.h" />
-    <ClInclude Include="LearnComponent.h" />
-    <ClInclude Include="Line.h" />
-    <ClInclude Include="LightManager.h" />
-    <ClInclude Include="LogSistem.h" />
-    <ClInclude Include="MeshFilter.h" />
-    <ClInclude Include="MeshModel.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="ModelManager.h" />
-    <ClInclude Include="MonoBehaviour.h" />
-    <ClInclude Include="PSO.h" />
+    <ClInclude Include="Engine\Physics\FacadeJolt.h" />
+    <ClInclude Include="Engine\Model\FBXLoader.h" />
+    <ClInclude Include="Engine\Script\GameScript.h" />
+    <ClInclude Include="Engine\Graphics\GpuDrivenRenderer.h" />
+    <ClInclude Include="Engine\Graphics\GpuDrivenTypes.h" />
+    <ClInclude Include="Engine\Editor\ImGuiCamera.h" />
+    <ClInclude Include="Engine\Editor\ImGuiContentBrowser.h" />
+    <ClInclude Include="Engine\Editor\ImGuiDebug.h" />
+    <ClInclude Include="Engine\Editor\ImGuiSpriteUV.h" />
+    <ClInclude Include="Engine\Editor\ImGuiUIManager.h" />
+    <ClInclude Include="Engine\Editor\ImGuiWindow.h" />
+    <ClInclude Include="Engine\Core\Input.h" />
+    <ClInclude Include="Engine\Physics\JoltAllinclude.h" />
+    <ClInclude Include="Engine\ECS\LearnComponent.h" />
+    <ClInclude Include="Engine\Graphics\Line.h" />
+    <ClInclude Include="Engine\Graphics\LightManager.h" />
+    <ClInclude Include="Engine\Core\LogSistem.h" />
+    <ClInclude Include="Engine\ECS\MeshFilter.h" />
+    <ClInclude Include="Engine\Model\MeshModel.h" />
+    <ClInclude Include="Engine\Model\Model.h" />
+    <ClInclude Include="Engine\Model\ModelManager.h" />
+    <ClInclude Include="Engine\ECS\MonoBehaviour.h" />
+    <ClInclude Include="Engine\ECS\Transform.h" />
+    <ClInclude Include="Engine\Graphics\PSO.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="ResourceObject.h" />
-    <ClInclude Include="Rigidbody.h" />
-    <ClInclude Include="ScriptRuntime.h" />
-    <ClInclude Include="ShadowMapBuffer.h" />
-    <ClInclude Include="Sound.h" />
-    <ClInclude Include="Sphere.h" />
-    <ClInclude Include="SphereCollider.h" />
-    <ClInclude Include="Sprite.h" />
-    <ClInclude Include="TextureManager.h" />
-    <ClInclude Include="TriangleModel.h" />
-    <ClInclude Include="TUFEngine.h" />
-    <ClInclude Include="Vector.h" />
-    <ClInclude Include="Vector2.h" />
-    <ClInclude Include="Vector3.h" />
-    <ClInclude Include="Vector4.h" />
-    <ClInclude Include="VertexResource.h" />
-    <ClInclude Include="WaveGrid.h" />
-    <ClInclude Include="WaveGridPSO.h" />
+    <ClInclude Include="Engine\Core\ResourceObject.h" />
+    <ClInclude Include="Engine\Physics\Rigidbody.h" />
+    <ClInclude Include="Engine\Script\ScriptRuntime.h" />
+    <ClInclude Include="Engine\Graphics\ShadowMapBuffer.h" />
+    <ClInclude Include="Engine\Audio\Sound.h" />
+    <ClInclude Include="Engine\Model\Sphere.h" />
+    <ClInclude Include="Engine\Physics\SphereCollider.h" />
+    <ClInclude Include="Engine\Graphics\Sprite.h" />
+    <ClInclude Include="Engine\Graphics\TextureManager.h" />
+    <ClInclude Include="Engine\Model\TriangleModel.h" />
+    <ClInclude Include="Engine\Core\TUFEngine.h" />
+    <ClInclude Include="Engine\Math\Vector.h" />
+    <ClInclude Include="Engine\Math\Vector2.h" />
+    <ClInclude Include="Engine\Math\Vector3.h" />
+    <ClInclude Include="Engine\Math\Vector4.h" />
+    <ClInclude Include="Engine\Graphics\VertexResource.h" />
+    <ClInclude Include="Engine\Model\WaveGrid.h" />
+    <ClInclude Include="Engine\Model\WaveGridPSO.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="externals\DirectXTex\DirectXTex_Desktop_2022_Win10.vcxproj">
