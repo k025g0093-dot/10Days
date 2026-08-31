@@ -44,6 +44,31 @@ public class Templet
 
     }
 
+    // ── 接触したときに「上に飛ぶ」ための仕組み ──
+    // スクリプト側から Jump(速度) を呼ぶとフラグが立ち、
+    // Main.cs がそれを mode 2 コマンドとして C++ に送り、Jolt の Y 速度が上書きされる。
+    private float m_pendingJumpVelocityY = 0.0f;
+    private bool  m_hasPendingJump = false;
+
+    /// <summary>Y方向の速度を指定して上に飛ばす。指定した値がそのまま Jolt の速度Yになる。</summary>
+    protected void Jump(float velocityY)
+    {
+        m_pendingJumpVelocityY = velocityY;
+        m_hasPendingJump = true;
+    }
+
+    /// <summary>Main.cs が使う。ジャンプ要求が溜まっているか。</summary>
+    public bool HasPendingJump => m_hasPendingJump;
+
+    /// <summary>Main.cs が使う。ジャンプ要求を取り出してクリアする。</summary>
+    public float ConsumeJump()
+    {
+        float v = m_pendingJumpVelocityY;
+        m_hasPendingJump = false;
+        m_pendingJumpVelocityY = 0.0f;
+        return v;
+    }
+
     public virtual void OnStart() { }
     public virtual void Update() { }
     public virtual void InPostion(ref float x, ref float y, ref float z, float dt) { }

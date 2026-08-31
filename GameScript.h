@@ -33,6 +33,14 @@ public:
     void StartScript();             // .cs 生成 + VS 起動
     void ReloadScript();            // ScriptRuntime::RebuildAndRestart を呼ぶだけ
 
+    // ── 物理イベントを C# 側へ転送する ──
+    // FacadeJolt::DispatchEvents() から Component 経由で呼ばれる。
+    // ここで ScriptRuntime に積んでおくと、同フレームの Tick で C# に届く。
+    void OnTriggerEnter(Entity* other) override;
+    void OnTriggerExit(Entity* other) override;
+    void OnCollisionEnter(Entity* other) override;
+    void OnCollisionExit(Entity* other) override;
+
     // Update() は不要になった（ScriptRuntime が一括で回す）
 
 private:

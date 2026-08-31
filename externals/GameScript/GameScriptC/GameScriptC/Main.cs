@@ -122,6 +122,8 @@ namespace GameScriptC
                 // ── physics events ──
                 // C++: targetScriptInstanceId / eventType / otherEntityId / otherEntityName
                 int eventCount = ReadI32(buf, ref o);
+                if (eventCount > 0)
+                    Console.WriteLine($"[C#] physics events received: {eventCount}");
                 for (int i = 0; i < eventCount; i++)
                 {
                     int targetScriptInstanceId = ReadI32(buf, ref o);
@@ -151,6 +153,22 @@ namespace GameScriptC
                         Console.WriteLine($"[警告] 未知のPhysicsEventType: {(int)eventType}");
                         break;
                     }
+                }
+
+                // ── ジャンプ要求を mode 2 コマンドとして送る ──
+                // 接触イベントの中で Jump() が呼ばれていたら、同じフレームで C++ に届く。
+                foreach (var kv in s_instances)
+                {
+                    if (!kv.Value.HasPendingJump) continue;
+                    float jumpVy = kv.Value.ConsumeJump();
+
+                    cmds.AddRange(BitConverter.GetBytes(kv.Key));
+                    cmds.AddRange(BitConverter.GetBytes(2));       // mode 2 = Jump(Yだけ上書き)
+                    cmds.AddRange(BitConverter.GetBytes(0.0f));
+                    cmds.AddRange(BitConverter.GetBytes(jumpVy));
+                    cmds.AddRange(BitConverter.GetBytes(0.0f));
+                    cmdCount++;
+                    Console.WriteLine($"[C#] jump command  id={kv.Key}  vy={jumpVy}");
                 }
 
                 // ── 返信 ──
