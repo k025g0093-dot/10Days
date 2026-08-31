@@ -23,6 +23,9 @@ public static class Gamepad
     private const ushort BTN_X = 0x4000;
     private const ushort BTN_Y = 0x8000;
 
+    private static ushort s_previousButtons;
+    private const float LEFT_STICK_DEAD_ZONE = 0.24f;
+
     // 他クラスから毎フレーム呼んでもらう更新関数
     public static State? GetKeystate()
     {
@@ -56,6 +59,16 @@ public static class Gamepad
         return ((ushort)state.Value.Gamepad.Buttons & mask) != 0;
     }
 
+    // 押した瞬間だけ true。ジャンプのような単発操作に使う。
+    public static bool IsButtonTriggered(ushort mask)
+    {
+        var state = GetKeystate();
+        ushort buttons = state.HasValue ? (ushort)state.Value.Gamepad.Buttons : (ushort)0;
+        bool triggered = (buttons & mask) != 0 && (s_previousButtons & mask) == 0;
+        s_previousButtons = buttons;
+        return triggered;
+    }
+
     // よく使うボタンはショートカット関数にしておくと、他クラスから呼びやすい
     public static bool IsA() => IsButtonDown(BTN_A);
     public static bool IsB() => IsButtonDown(BTN_B);
@@ -64,6 +77,32 @@ public static class Gamepad
     public static bool IsLB() => IsButtonDown(BTN_LEFT_SHOULDER);
     public static bool IsRB() => IsButtonDown(BTN_RIGHT_SHOULDER);
     public static bool IsStart() => IsButtonDown(BTN_START);
+    public static bool IsATriggered() => IsButtonTriggered(BTN_A);
+    public static bool IsDPadUp() => IsButtonDown(BTN_DPAD_UP);
+    public static bool IsDPadDown() => IsButtonDown(BTN_DPAD_DOWN);
+    public static bool IsDPadLeft() => IsButtonDown(BTN_DPAD_LEFT);
+    public static bool IsDPadRight() => IsButtonDown(BTN_DPAD_RIGHT);
+
+    // 左スティックを -1.0〜+1.0 の範囲へ正規化して返す。
+    // 小さな入力は無視するので、スティックのドリフトでは動かない。
+    public static void GetLeftStickInput(out float x, out float z)
+    {
+        x = 0.0f;
+        z = 0.0f;
+
+        var state = GetKeystate();
+        if (!state.HasValue) return;
+
+        float rawX = state.Value.Gamepad.LeftThumbX / 32767.0f;
+        float rawZ = state.Value.Gamepad.LeftThumbY / 32767.0f;
+        float magnitude = MathF.Min(1.0f, MathF.Sqrt(rawX * rawX + rawZ * rawZ));
+
+        if (magnitude <= LEFT_STICK_DEAD_ZONE) return;
+
+        float scaledMagnitude = (magnitude - LEFT_STICK_DEAD_ZONE) / (1.0f - LEFT_STICK_DEAD_ZONE);
+        x = rawX / magnitude * scaledMagnitude;
+        z = rawZ / magnitude * scaledMagnitude;
+    }
 
     // デバッグ表示用(元のGamePadUpdateの役割はこちらに統合)
     public static void DebugPrintState()

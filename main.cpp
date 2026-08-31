@@ -268,17 +268,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			////描画処理ここまで
 			////================================================================================================================
 
-			if (Input::GetKeyDown(VK_SPACE)) {
-				sound->SoundPlayer(soundData1);
-				sound->SoundPlayer(title);
-			}
+			//if (Input::GetKeyDown(VK_SPACE)) {
+			//	sound->SoundPlayer(soundData1);
+			//	sound->SoundPlayer(title);
+			//}
 		}
 
 		if (Input::GetKeyDown(VK_ESCAPE)) break;
 	}
 
-	sound->SoundUnLoad(&soundData1);
-	delete sound;
+	//sound->SoundUnLoad(&soundData1);
+	//delete sound;
 	delete engine;
 
 	return 0;
