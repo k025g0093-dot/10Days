@@ -1,10 +1,10 @@
 ﻿using System;
 
 // ==============================================
-// #SCRIPTNAME#
+// player
 // ==============================================
 // C++側の GameScript コンポーネントで Script Name を
-// 「#SCRIPTNAME#」に設定すると、このクラスが実行されます。
+// 「player」に設定すると、このクラスが実行されます。
 //
 // 自分自身の座標:
 //   Position.X
@@ -32,8 +32,12 @@
 //   other.EntityName で相手の名前を取得できる。
 // ==============================================
 
-public class #SCRIPTNAME# : Templet
+public class player : Templet
 {
+    private const float MoveSpeed = 5.0f;
+    private const float JumpVelocity = 8.0f;
+    private const float EnemyBounceVelocity = 18.0f;
+
     public override void OnStart()
     {
         // 開始時に一度だけ呼ばれる
@@ -43,47 +47,26 @@ public class #SCRIPTNAME# : Templet
     {
         // 毎フレーム呼ばれる
 
-        // 例: Spaceを押した瞬間にジャンプ
-        if (IsKeyTriger(ConsoleKey.Spacebar))
+        // Space またはゲームパッドの A ボタンでジャンプ
+        if (IsJumpTriggered())
         {
-            Jump(8.0f);
+            Jump(JumpVelocity);
         }
     }
 
     public override void GetMoveVelocity(ref float vx, ref float vz, float dt)
     {
-        // 例: 名前が Player のEntityへ向かって移動する
-        var player = FindEntity("Player");
-
-        if (!player.HasValue)
-        {
-            return;
-        }
-
-        ScriptVector3 targetPosition = player.Value.Position;
-
-        float dx = targetPosition.X - Position.X;
-        float dz = targetPosition.Z - Position.Z;
-
-        float distance = MathF.Sqrt(dx * dx + dz * dz);
-
-        // 近づきすぎたら止まる
-        if (distance < 1.0f)
-        {
-            return;
-        }
-
-        const float speed = 4.0f;
-
-        vx = dx / distance * speed;
-        vz = dz / distance * speed;
+        // WASD / 矢印キー / 左スティック / 十字キーで移動
+        ScriptVector2 input = GetMoveInput();
+        vx = input.X * MoveSpeed;
+        vz = input.Z * MoveSpeed;
     }
 
     public override void OnTriggerEnter(CollisionInfo other)
     {
-        if (other.EntityName == "Player")
+        if (IsEnemy(other))
         {
-            // PlayerがTriggerに入った瞬間
+            BounceFromEnemy();
         }
     }
 
@@ -93,13 +76,26 @@ public class #SCRIPTNAME# : Templet
 
     public override void OnCollisionEnter(CollisionInfo other)
     {
-        if (other.EntityName == "Player")
+        if (IsEnemy(other))
         {
-            // Playerと物理衝突した瞬間
+            BounceFromEnemy();
         }
     }
 
     public override void OnCollisionExit(CollisionInfo other)
     {
+    }
+
+    // GUIで敵オブジェクトの名前を "Enemy" に設定して使う。
+    // 大文字・小文字は区別しないため "enemy" でも判定される。
+    private static bool IsEnemy(CollisionInfo other)
+    {
+        return string.Equals(other.EntityName, "Enemy", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private void BounceFromEnemy()
+    {
+        // Jump は Y 方向の速度だけを指定するため、水平速度はそのまま保たれる。
+        Jump(EnemyBounceVelocity);
     }
 }

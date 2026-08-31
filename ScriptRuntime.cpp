@@ -1,6 +1,7 @@
 #include "ScriptRuntime.h"
 #include "GameScript.h"
 #include "Entity.h"
+#include "EntityManager.h"
 #include <cstdio>
 
 #define SR_LOG(msg) { OutputDebugStringA(msg); OutputDebugStringA("\n"); }
@@ -244,10 +245,23 @@ void ScriptRuntime::Tick(float dt) {
 	for (int id : m_destroyPending) PutI32(m_send, id);
 	m_destroyPending.clear();
 
+	const auto& entities = EntityManager::GetInstance()->GetRuntimeEntities();
+
+	PutI32(m_send, static_cast<int32_t>(entities.size()));
+
+	for (const auto& entity : entities) {
+		PutStr(m_send, entity->displayName);
+		PutF32(m_send, entity->transform.position.x);
+		PutF32(m_send, entity->transform.position.y);
+		PutF32(m_send, entity->transform.position.z);
+	}
+
+
 	// tick（spawn 済みのものだけ）
 	std::vector<int> ticks;
 	for (auto& kv : m_instances)
 		if (!kv.second.spawnPending) ticks.push_back(kv.first);
+
 
 	PutI32(m_send, (int32_t)ticks.size());
 	for (int id : ticks) {
